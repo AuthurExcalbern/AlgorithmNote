@@ -5,10 +5,12 @@ You can think it is a report about solving problems.
 Almost programs will be achieved by C language. 
 ****
 ## Catalog
-* [01.Greedy Algorithm](#01.Greedy Algorithm)
+* 01.Greedy Algorithm
     * Moving Tables;from HDU 1050
 ****
-### 01.Greedy Algorithm
+
+01.Greedy Algorithm
+----------------------
 With the advice of my frient,I will learn greedy algorithm firstly.  
 The major thought about greedy algorithm is that if it is the best choose,we shoult choose it immediately at that time.
 
