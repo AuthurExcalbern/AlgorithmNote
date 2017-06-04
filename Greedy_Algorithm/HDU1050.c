@@ -1,4 +1,4 @@
-/*
+/* It is wrong!!!
  * HDU:1050
  * 
  * URL: http://acm.hdu.edu.cn/showproblem.php?pid=1050
