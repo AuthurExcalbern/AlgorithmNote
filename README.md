@@ -5,7 +5,7 @@ You can think it is a report about solving problems.
 Almost programs will be achieved by C language. 
 ****
 ## Catalog
-* [01.Greedy Algorithm](https://github.com/AuthurExcalbern/AlgorithmNote#01greedy-algorithm)
+* [01.Greedy Algorithm](https://github.com/AuthurExcalbern/AlgorithmNote/tree/master/Greedy_Algorithm)
     * Moving Tables;from HDU 1050
 ****
 
