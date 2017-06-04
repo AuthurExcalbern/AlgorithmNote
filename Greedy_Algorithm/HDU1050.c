@@ -1,11 +1,11 @@
-/* It is wrong!!!
+/* 
  * HDU:1050
  * 
  * URL: http://acm.hdu.edu.cn/showproblem.php?pid=1050
  * 
- * This is one kind of my solution.
+ * This is one kind of my solution,using sign section way.
  * It is so easy.
- * But is not solve by greedy algorithm.
+ * But it's not solve by greedy algorithm.
  * So I will solve this problen by greedy algorithm latter
  * In the other file named HDU1050_G,you could see it.
  * GOOD LUCK!
