@@ -15,4 +15,6 @@ With the advice of my frient,I will learn greedy algorithm firstly.
 The major thought about greedy algorithm is that if it is the best choose,we shoult choose it immediately at that time.
 
 * Moving Tables;from HDU 1050
-    * This problem is pretty easy.It can be solved by signing sections.
+    * This problem is pretty easy.Because it can be solved by signing sections.  
+    * First,I will solve it by signing sections way.(At HDU1050.c file)
+    * Seconed,I will solve it by greedy algorithm.(At HDU1050_G.c file)
