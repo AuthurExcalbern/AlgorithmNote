@@ -3,10 +3,11 @@ This is my note recording my learning path about algorithm.
 It will contain some gread problems and my solution thought.  
 You can think it is a report about solving problems.  
 Almost programs will be achieved by C language. 
+If you find something is wrong,please send E-mail to me.Thank you!
 ****
 ## Catalog
 * [01.Greedy Algorithm](https://github.com/AuthurExcalbern/AlgorithmNote/tree/master/Greedy_Algorithm)
-    * Moving Tables;from HDU 1050
+    * [Moving Tables](http://acm.hdu.edu.cn/showproblem.php?pid=1050);from HDU 1050
 ****
 
 01.Greedy Algorithm
@@ -16,5 +17,5 @@ The major thought about greedy algorithm is that if it is the best choose,we sho
 
 * Moving Tables;from HDU 1050
     * This problem is pretty easy.Because it can be solved by signing sections.  
-    * First,I will solve it by signing sections way.(At HDU1050.c file)
+    * First,I will solve it by simply signing sections way.(At HDU1050.c file)
     * Seconed,I will solve it by greedy algorithm.(At HDU1050_G.c file)
