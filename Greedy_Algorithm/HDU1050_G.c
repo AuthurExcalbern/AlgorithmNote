@@ -1,56 +1,81 @@
 /*
- * I am so sorry that I haven't complete it now.
- * I will solve it as fast as I can.
+ * HDU:1050
+ * 
+ * URL: http://acm.hdu.edu.cn/showproblem.php?pid=1050
+ * 
+ * It is solved by greedy algoorithm!
+ * This isn't easy.But I make it!
+ * Of cause,it also is solved by signing section,but it have some different.
+ * 
  */
 
-/*
+#include<stdio.h>
+#include<string.h>
+#define swap(a, b, key) key = a, a = b, b = key;
+
 int N,count,list[210];
 
-struct map//输入的区间的结构体
+//The struct can let us check section status easily.
+struct section
 {
-    int a,b;//a为起点，b为终点
-    int bool;//用于标记是否已经选取该区间
-}m[210];
+    int start,end;
+    int bool;//It's used to sign whether the section was signed.
+}sec[210];
 
-void insort(int len)//插入排序法：把输入的区间按结束点b的大小来排序
+//I use insertion sort to sort the "sec" struct arrey according to its size of end.
+void insort(int len)
 {
     int key1,key2,z,i,j;
+    
     for(j = 1; j < len; j++)
+    {
+        //If we want to swap end, we should swap start too!!!
+        key1 = sec[j].end;
+        key2 = sec[j].start;
+        z = j - 1;
+        while(z >= 0 && sec[z].end > key1)
         {
-            key1 = m[j].b;
-            key2 = m[j].a;//！！注意：交换b的同时要交换起点a
-            z = j - 1;
-            while(z >= 0 && m[z].b > key1)
-            {
-                m[z + 1].b = m[z].b;
-                m[z + 1].a = m[z].a;
-                z = z - 1;
-            }
-            m[z + 1].b = key1;
-            m[z + 1].a = key2;
+            sec[z + 1].end = sec[z].end;
+            sec[z + 1].start = sec[z].start;
+            z = z - 1;
         }
+        sec[z + 1].end = key1;
+        sec[z + 1].start = key2;
+    }
+    
 }
 
-void choose(int beg)//选取中beg所在的区间
+//This function is use recursion to choose the suitable section at each time. 
+void choose(int beg, int len)
 {
     int i,j = 0,z,min = 210;
-    m[beg].bool = 1;//改变区间状态
-    memset(list,0,sizeof(list));
-    for( i = beg+1; i < N; i++)//用于遍历出在选择beg区间时，所有可以（在这次选择中）下一个被选择的区间
-        if( m[i].a >= m[beg].b && m[i].bool == 0)
+    
+    sec[beg].bool = 1;//Change the section status
+    
+    memset(list,0,sizeof(list));//Initialize the arrey
+    
+    for( i = beg + 1; i < len; i++)//
+        if( sec[i].start > sec[beg].end && sec[i].bool == 0)
         {
-            list[j] = i;//list用于记录可能选取的区间位置
+            //The "list" arrey is used to record which section can be choosed.
+            //It's very importent.
+            //Because we can get plural choices when we choose the next section.
+            //And we should choose the section which have the mininum "start".
+            list[j] = i; 
             j++;
         }
     if( j != 0)
     {
-        for( i = 0; i < j; i++)//！！在所有可能中我们应该选取起点最小的那个
-            if( min > m[ list[i] ].a)
+        //Just search the section that have the mininum "start"
+        for( i = 0; i < j; i++)
+            if( min > sec[ list[i] ].start)
             {
-                min = m[ list[i] ].a;
-                z = list[i];
+                min = sec[ list[i] ].start;
+                z = list[i];//Use "z" to record it.
             }
-            choose(z);//递归：用来（在一次选择中）所能选的最多区间
+        
+        //Use recursion to get the biggest table number (we can move) each time.
+        choose(z, len);
     }
     else
         return;
@@ -58,34 +83,47 @@ void choose(int beg)//选取中beg所在的区间
 
 int main()
 {
-    int i,j,t,ans;
-    scanf("%d",&t);
-    while(t--)
+    int count_i,count_j,testNum,eachTestNum,ans;
+    int swapKey = 0;
+    
+    scanf("%d",&testNum);
+    
+    while(testNum--)
     {
-        count = 0;//！！初始化
-        scanf("%d",&N);
-        for( i = 0; i < N; i++)
+        ans = 0;//Initialize the arrey
+        
+        scanf("%d",&eachTestNum);
+        
+        for( count_i = 0; count_i < eachTestNum; count_i++)
         {
-            scanf("%d %d",&m[i].a,&m[i].b);
-            if( m[i].a > m[i].b)//！！注意，起点终点的大小是不确定的，如果起点大于终点就要交换大小
-            {
-                j = m[i].a;
-                m[i].a = m[i].b;
-                m[i].b = j;
-            }
-            m[i].bool = 0;//！！注意初始化
+            
+            scanf("%d %d",&sec[count_i].start,&sec[count_i].end);
+            
+            //Just make the section more simple.
+            sec[count_i].start = (sec[count_i].start + 1) / 2;
+            sec[count_i].end = (sec[count_i].end + 1) / 2;
+            
+            //Pay attention to it!!
+            //Maybe the start room number will bigger then the room end number.
+            if( sec[count_i].start > sec[count_i].end)
+                swap( sec[count_i].start, sec[count_i].end, swapKey);
+            
+            sec[count_i].bool = 0;//Initialize it!!!!!
         }
-        insort(N);//排序
-        for( i = 0; i < N; i++)
+        
+        insort(eachTestNum);
+        
+        for( count_i = 0; count_i < eachTestNum; count_i++)
         {
-            if( m[i].bool == 0)
+            if( sec[count_i].bool == 0)
             {
-                count++;
-                choose(i);
+                ans++;
+                choose(count_i, eachTestNum);
             }
         }
-        ans = count * 10;
+        
+        ans = ans * 10;
         printf("%d\n",ans);
     }
     return 0;
-}*/
+}
