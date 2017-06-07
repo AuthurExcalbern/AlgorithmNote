@@ -8,7 +8,6 @@ If you find something is wrong,please send E-mail to me.Thank you!
 ## Catalog
 * [01.Greedy Algorithm](https://github.com/AuthurExcalbern/AlgorithmNote/tree/master/Greedy_Algorithm)
     * [Moving Tables](http://acm.hdu.edu.cn/showproblem.php?pid=1050);from HDU 1050
-    * [Wooden Sticks](http://acm.hdu.edu.cn/showproblem.php?pid=1051);from HDU 1051
 ****
 
 01.Greedy Algorithm
@@ -20,5 +19,3 @@ The major thought about greedy algorithm is that if it is the best choose,we sho
     * This problem is pretty easy.Because it can be solved by signing sections.  
     * First,I will solve it by simply signing sections way.(At HDU1050.c file)
     * Seconed,I will solve it by greedy algorithm.(At HDU1050_G.c file)
-* Wooden Sticks;from HDU 1051
-    * I cann't solve it now...
